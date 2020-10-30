@@ -1,6 +1,9 @@
 <html>
 	<head><title>Current Temperature</title></head>
 <body>
+    {% if message is defined and message|length > 0 %}
+    <h1> {{message}} </h1>
+    {% else %}
     <h1> Weather in {{obj.cityName}}, {{obj.zipcode}} </h1>
     <br>
     <h1> The current temperature (F) is : {{obj.temp}}° </h1>
@@ -11,6 +14,9 @@
     <h1> Wind Speed: {{obj.ws}} mph </h1>
     <h1> Sunrise Time: {{obj.rise}}</h1>
     <h1> Sunset Time: {{obj.set}}</h1>
-    <button href="/"> Go Back </button>
+    {% endif %}
+    <form method="POST" action="/">
+        <button> Go Back </button>
+    </form>
 </body>
 </html>
