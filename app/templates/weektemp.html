@@ -1,15 +1,33 @@
 <html>
-    <head><title>5 Day 3 Hour Temperature</title></head>
+    <head>
+        <title> 5 Day 3 Hour Temperature </title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
     <style>
-        .column{
-            float: left;
+
+        .title {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: xx-large;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        tr {
+            padding: 12.5%;
+        }
+
+        td {
+            padding: 5px;
+        }
+
+        .column {
             align-items: center;
             align-self: center;
-            width: 19%;
-            padding: 20px;
+            width: 100%;
+            padding: 5%;
             margin: 5px;
-            widows:100%;
-            height: 300px; 
+            widows: 100%;
+            height: auto; 
             background-color: rgb(175, 204, 238);
             box-sizing: border-box;
             border-radius: 20px;
@@ -100,20 +118,264 @@
 
 <body>
     {% if message is defined and message|length > 0 %}
+    <br>
     <h1> {{message}} </h1>
     {% else %}
-    <h1 id = "center" style ="padding-top:100px;"> Weather Forecast for (City, State) </h1>
+    <h1 id = "center" style ="padding-top:100px;"> Weather Forecast for {{obj.city}}, {{obj.country}} </h1>
     <br>
     <div id = "middle">
-    <div id = "center" class="row">
-        <div class="column" style="margin-left:15px;"> <h1>  Day 1 </h1> </div>
-        <div class="column"> <h1> Day 2 </h1> </div>
-        <div class="column">  <h1> Day 3 </h1> </div>
-        <div class="column"> <h1> Day 4 </h1> </div>
-        <div class="column"> <h1> Day 5 </h1> </div>
+    <div  class="table-responsive" id = "center" class="row">
+    
+        <div id = "center" class="column"> 
+            <h1 class = "title"> {{obj.day1.get("date")}} </h1>
+            <br>
+            <div style = "text-align: center;">               
+                <table style="width:100%">
+                    <tr>
+                        <td> 12 AM </td>
+                        <td> 3 AM  </td> 
+                        <td> 6 AM </td>
+                        <td> 9 AM  </td>
+                        <td> 12 PM </td>
+                        <td> 3 PM </td> 
+                        <td> 6 PM </td>
+                        <td> 9 PM </td>
+                    </tr>
+                    <tr>
+                        <td> <img src = '{{obj.day1.get("12:00AMicon")}}'> </td>
+                        <td> <img src = '{{obj.day1.get("03:00AMicon")}}'> </td> 
+                        <td> <img src = '{{obj.day1.get("06:00AMicon")}}'> </td>
+                        <td> <img src = '{{obj.day1.get("09:00AMicon")}}'> </td>
+                        <td> <img src = '{{obj.day1.get("12:00PMicon")}}'> </td>
+                        <td> <img src = '{{obj.day1.get("03:00PMicon")}}'> </td> 
+                        <td> <img src = '{{obj.day1.get("06:00PMicon")}}'> </td>
+                        <td> <img src = '{{obj.day1.get("09:00PMicon")}}'> </td>
+                    </tr>
+                    <tr>
+                        <td> {{ obj.day1.get("12:00AM") }}° </td>
+                        <td> {{ obj.day1.get("03:00AM") }}° </td> 
+                        <td> {{ obj.day1.get("06:00AM") }}° </td>
+                        <td> {{ obj.day1.get("09:00AM") }}° </td>
+                        <td> {{ obj.day1.get("12:00PM") }}° </td>
+                        <td> {{ obj.day1.get("03:00PM") }}° </td> 
+                        <td> {{ obj.day1.get("06:00PM") }}° </td>
+                        <td> {{ obj.day1.get("09:00PM") }}° </td>
+                    </tr>
+                    <tr>
+                        <td> {{ obj.day1.get("12:00AMd") }} </td>
+                        <td> {{ obj.day1.get("03:00AMd") }} </td> 
+                        <td> {{ obj.day1.get("06:00AMd") }} </td>
+                        <td> {{ obj.day1.get("09:00AMd") }} </td>
+                        <td> {{ obj.day1.get("12:00PMd") }} </td>
+                        <td> {{ obj.day1.get("03:00PMd") }} </td> 
+                        <td> {{ obj.day1.get("06:00PMd") }} </td>
+                        <td> {{ obj.day1.get("09:00PMd") }} </td>
+                    </tr>
+                </table>
+                
+            </div> 
+        </div>
+
+
+        <div id = "center" class="column">
+            <h1 class = "title"> {{obj.day2.get("date")}} </h1> <br>
+            <div style = "text-align: center;">
+                <table style="width:100%">
+                    <tr>
+                        <td> 12 AM </td>
+                        <td> 3 AM  </td> 
+                        <td> 6 AM </td>
+                        <td> 9 AM  </td>
+                        <td> 12 PM </td>
+                        <td> 3 PM </td> 
+                        <td> 6 PM </td>
+                        <td> 9 PM </td>
+                    </tr>
+                    <tr>
+                        <td> <img src = '{{obj.day2.get("12:00AMicon")}}'> </td>
+                        <td> <img src = '{{obj.day2.get("03:00AMicon")}}'> </td> 
+                        <td> <img src = '{{obj.day2.get("06:00AMicon")}}'> </td>
+                        <td> <img src = '{{obj.day2.get("09:00AMicon")}}'> </td>
+                        <td> <img src = '{{obj.day2.get("12:00PMicon")}}'> </td>
+                        <td> <img src = '{{obj.day2.get("03:00PMicon")}}'> </td> 
+                        <td> <img src = '{{obj.day2.get("06:00PMicon")}}'> </td>
+                        <td> <img src = '{{obj.day2.get("09:00PMicon")}}'> </td>
+                    </tr>
+                    <tr>
+                        <td> {{ obj.day2.get("12:00AM") }}° </td>
+                        <td> {{ obj.day2.get("03:00AM") }}° </td> 
+                        <td> {{ obj.day2.get("06:00AM") }}° </td>
+                        <td> {{ obj.day2.get("09:00AM") }}° </td>
+                        <td> {{ obj.day2.get("12:00PM") }}° </td>
+                        <td> {{ obj.day2.get("03:00PM") }}° </td> 
+                        <td> {{ obj.day2.get("06:00PM") }}° </td>
+                        <td> {{ obj.day2.get("09:00PM") }}° </td>
+                    </tr>
+                    <tr>
+                        <td> {{ obj.day2.get("12:00AMd") }} </td>
+                        <td> {{ obj.day2.get("03:00AMd") }} </td> 
+                        <td> {{ obj.day2.get("06:00AMd") }} </td>
+                        <td> {{ obj.day2.get("09:00AMd") }} </td>
+                        <td> {{ obj.day2.get("12:00PMd") }} </td>
+                        <td> {{ obj.day2.get("03:00PMd") }} </td> 
+                        <td> {{ obj.day2.get("06:00PMd") }} </td>
+                        <td> {{ obj.day2.get("09:00PMd") }} </td>
+                    </tr>
+                </table>
+            </div> 
+        </div>
+
+
+        <div id = "center" class="column"> 
+            <h1 class = "title"> {{obj.day3.get("date")}} </h1> <br>
+            <div style = "text-align: center;">
+                <table style="width:100%">
+                    <tr>
+                        <td> 12 AM </td>
+                        <td> 3 AM  </td> 
+                        <td> 6 AM </td>
+                        <td> 9 AM  </td>
+                        <td> 12 PM </td>
+                        <td> 3 PM </td> 
+                        <td> 6 PM </td>
+                        <td> 9 PM </td>
+                    </tr>
+                    <tr>
+                        <td> <img src = '{{obj.day3.get("12:00AMicon")}}'> </td>
+                        <td> <img src = '{{obj.day3.get("03:00AMicon")}}'> </td> 
+                        <td> <img src = '{{obj.day3.get("06:00AMicon")}}'> </td>
+                        <td> <img src = '{{obj.day3.get("09:00AMicon")}}'> </td>
+                        <td> <img src = '{{obj.day3.get("12:00PMicon")}}'> </td>
+                        <td> <img src = '{{obj.day3.get("03:00PMicon")}}'> </td> 
+                        <td> <img src = '{{obj.day3.get("06:00PMicon")}}'> </td>
+                        <td> <img src = '{{obj.day3.get("09:00PMicon")}}'> </td>
+                    </tr>
+                    <tr>
+                        <td> {{ obj.day3.get("12:00AM") }}° </td>
+                        <td> {{ obj.day3.get("03:00AM") }}° </td> 
+                        <td> {{ obj.day3.get("06:00AM") }}° </td>
+                        <td> {{ obj.day3.get("09:00AM") }}° </td>
+                        <td> {{ obj.day3.get("12:00PM") }}° </td>
+                        <td> {{ obj.day3.get("03:00PM") }}° </td> 
+                        <td> {{ obj.day3.get("06:00PM") }}° </td>
+                        <td> {{ obj.day3.get("09:00PM") }}° </td>
+                    </tr>
+                    <tr>
+                        <td> {{ obj.day3.get("12:00AMd") }} </td>
+                        <td> {{ obj.day3.get("03:00AMd") }} </td> 
+                        <td> {{ obj.day3.get("06:00AMd") }} </td>
+                        <td> {{ obj.day3.get("09:00AMd") }} </td>
+                        <td> {{ obj.day3.get("12:00PMd") }} </td>
+                        <td> {{ obj.day3.get("03:00PMd") }} </td> 
+                        <td> {{ obj.day3.get("06:00PMd") }} </td>
+                        <td> {{ obj.day3.get("09:00PMd") }} </td>
+                    </tr>
+                </table>
+            </div> 
+        </div>
+
+
+        <div id = "center" class="column"> 
+            <h1 class = "title"> {{obj.day4.get("date")}} </h1> <br>
+            <div style = "text-align: center;">
+                <table style="width:100%">
+                    <tr>
+                        <td> 12 AM </td>
+                        <td> 3 AM  </td> 
+                        <td> 6 AM </td>
+                        <td> 9 AM  </td>
+                        <td> 12 PM </td>
+                        <td> 3 PM </td> 
+                        <td> 6 PM </td>
+                        <td> 9 PM </td>
+                    </tr>
+                    <tr>
+                        <td> <img src = '{{obj.day4.get("12:00AMicon")}}'> </td>
+                        <td> <img src = '{{obj.day4.get("03:00AMicon")}}'> </td> 
+                        <td> <img src = '{{obj.day4.get("06:00AMicon")}}'> </td>
+                        <td> <img src = '{{obj.day4.get("09:00AMicon")}}'> </td>
+                        <td> <img src = '{{obj.day4.get("12:00PMicon")}}'> </td>
+                        <td> <img src = '{{obj.day4.get("03:00PMicon")}}'> </td> 
+                        <td> <img src = '{{obj.day4.get("06:00PMicon")}}'> </td>
+                        <td> <img src = '{{obj.day4.get("09:00PMicon")}}'> </td>
+                    </tr>
+                    <tr>
+                        <td> {{ obj.day4.get("12:00AM") }}° </td>
+                        <td> {{ obj.day4.get("03:00AM") }}° </td> 
+                        <td> {{ obj.day4.get("06:00AM") }}° </td>
+                        <td> {{ obj.day4.get("09:00AM") }}° </td>
+                        <td> {{ obj.day4.get("12:00PM") }}° </td>
+                        <td> {{ obj.day4.get("03:00PM") }}° </td> 
+                        <td> {{ obj.day4.get("06:00PM") }}° </td>
+                        <td> {{ obj.day4.get("09:00PM") }}° </td>
+                    </tr>
+                    <tr>
+                        <td> {{ obj.day4.get("12:00AMd") }} </td>
+                        <td> {{ obj.day4.get("03:00AMd") }} </td> 
+                        <td> {{ obj.day4.get("06:00AMd") }} </td>
+                        <td> {{ obj.day4.get("09:00AMd") }} </td>
+                        <td> {{ obj.day4.get("12:00PMd") }} </td>
+                        <td> {{ obj.day4.get("03:00PMd") }} </td> 
+                        <td> {{ obj.day4.get("06:00PMd") }} </td>
+                        <td> {{ obj.day4.get("09:00PMd") }} </td>
+                    </tr>
+                </table>
+            </div> 
+        </div>
+
+        
+        <div id = "center" class="column"> 
+            <h1 class = "title"> {{obj.day5.get("date")}} </h1> <br>
+            <div style = "text-align: center;">
+                <table style="width:100%">
+                    <tr>
+                        <td> 12 AM </td>
+                        <td> 3 AM  </td> 
+                        <td> 6 AM </td>
+                        <td> 9 AM  </td>
+                        <td> 12 PM </td>
+                        <td> 3 PM </td> 
+                        <td> 6 PM </td>
+                        <td> 9 PM </td>
+                    </tr>
+                    <tr>
+                        <td> <img src = '{{obj.day5.get("12:00AMicon")}}'> </td>
+                        <td> <img src = '{{obj.day5.get("03:00AMicon")}}'> </td> 
+                        <td> <img src = '{{obj.day5.get("06:00AMicon")}}'> </td>
+                        <td> <img src = '{{obj.day5.get("09:00AMicon")}}'> </td>
+                        <td> <img src = '{{obj.day5.get("12:00PMicon")}}'> </td>
+                        <td> <img src = '{{obj.day5.get("03:00PMicon")}}'> </td> 
+                        <td> <img src = '{{obj.day5.get("06:00PMicon")}}'> </td>
+                        <td> <img src = '{{obj.day5.get("09:00PMicon")}}'> </td>
+                    </tr>
+                    <tr>
+                        <td> {{ obj.day5.get("12:00AM") }}° </td>
+                        <td> {{ obj.day5.get("03:00AM") }}° </td> 
+                        <td> {{ obj.day5.get("06:00AM") }}° </td>
+                        <td> {{ obj.day5.get("09:00AM") }}° </td>
+                        <td> {{ obj.day5.get("12:00PM") }}° </td>
+                        <td> {{ obj.day5.get("03:00PM") }}° </td> 
+                        <td> {{ obj.day5.get("06:00PM") }}° </td>
+                        <td> {{ obj.day5.get("09:00PM") }}° </td>
+                    </tr>
+                    <tr>
+                        <td> {{ obj.day5.get("12:00AMd") }} </td>
+                        <td> {{ obj.day5.get("03:00AMd") }} </td> 
+                        <td> {{ obj.day5.get("06:00AMd") }} </td>
+                        <td> {{ obj.day5.get("09:00AMd") }} </td>
+                        <td> {{ obj.day5.get("12:00PMd") }} </td>
+                        <td> {{ obj.day5.get("03:00PMd") }} </td> 
+                        <td> {{ obj.day5.get("06:00PMd") }} </td>
+                        <td> {{ obj.day5.get("09:00PMd") }} </td>
+                    </tr>
+                </table>
+            </div> 
+        </div>
+
       </div>
     </div>
     {% endif %}
+
     <form method="POST" action="/">
         <button class = "button"> Go Back </button>
     </form>
