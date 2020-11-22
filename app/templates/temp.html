@@ -52,26 +52,70 @@
 		li a:hover {
 			background-color: #111;
 		}
+
+		section {
+			background-color: lightpink;
+			align-items: center;
+            align-self: center;
+            width: 100%;
+            padding: 5%;
+            margin: 5px;
+            widows: 100%;
+            height: auto; 
+            box-sizing: border-box;
+            border-radius: 30px;
+		}
+		
+		.big {
+			padding: auto;
+			font-size: x-large;
+		}
     </style>
 
 
     <body>
-        <div style = "padding-top: 125px">
+		<div style= "background-color:white; padding-top: 85px;"></div>
+		<section>
+		<div>
         {% if message is defined and message|length > 0 %}
         <h1> {{message}} </h1>
-        {% else %}
-        <h1> Weather in {{obj.cityName}}, {{obj.zipcode}} </h1>
+		{% else %}
+		
+        <h1> Weather Today in {{obj.cityName}}, {{obj.zipcode}} </h1>
         </div>
         <br>
-        <h1> The current temperature (F) is : {{obj.temp}}° </h1>
-        <h1> Min temp: {{obj.mintemp}}° </h1>
-        <h1> Max temp: {{obj.maxtemp}}° </h1>
-        <h1> Description: {{obj.descr}} </h1>
-        <h1> Humidity: {{obj.hum}}% </h1>
-        <h1> Wind Speed: {{obj.ws}} mph </h1>
-        <h1> Sunrise Time: {{obj.rise}} </h1>
-        <h1> Sunset Time: {{obj.set}} </h1>
-        {% endif %}
+        <h1> {{obj.temp}}°F </h1>
+		<br>
+		<br>
+		<table class="table">
+			<tbody>
+			  <tr class = "big">
+				<th scope="col"> High/Low </th>
+				<th scope="col"> {{obj.maxtemp}}°/{{obj.mintemp}}° </th>
+				<th scope="col"> Description </th>
+				<th scope="col"> {{obj.descr}} </th>
+			  </tr>
+			</tbody>
+			<tbody>
+				<tr class = "big">
+				  <th scope="col"> Humidity </th>
+				  <th scope="col"> {{obj.hum}}% </th>
+				  <th scope="col"> Wind Speed </th>
+				  <th scope="col"> {{obj.ws}} mph </th>
+				</tr>
+			</tbody>
+			<tbody>
+				<tr class = "big">
+				  <th scope="col"> Sunrise Time </th>
+				  <th scope="col"> {{obj.rise}} </th>
+				  <th scope="col"> Sunset Time </th>
+				  <th scope="col"> {{obj.set}} </th>
+				</tr>
+			</tbody>
+		  </table>
+		</section>
 
+        {% endif %}
+		<div style= "background-color:white; padding-bottom: 5px;"></div>
     </body>
 </html>
